@@ -5,6 +5,8 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
+	pb "github.com/vinimazzarolo/go-grpc-demo/proto"
 )
 
 const (
@@ -20,12 +22,12 @@ func main() {
 
 	defer conn.Close()
 
+	client := pb.NewGreetServiceClient(conn)
 	/*
-		client := pb.NewGreetServiceClient(conn)
 		names := &pb.NamesList{
 			Names: []string{"Vini", "Alice", "Bob"},
 		}
-
-		callSayHello(client)
 	*/
+
+	callSayHello(client)
 }
